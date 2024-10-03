@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes move1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(50px, -30px);
+    }
+
+    50% {
+        transform: translate(-30px, 60px);
+    }
+
+    75% {
+        transform: translate(40px, -50px);
+    }
+}
+
+@keyframes move2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-60px, 40px);
+    }
+
+    50% {
+        transform: translate(40px, -40px);
+    }
+
+    75% {
+        transform: translate(-50px, 50px);
+    }
+}
+
+@keyframes move3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(40px, -40px);
+    }
+
+    50% {
+        transform: translate(-40px, 30px);
+    }
+
+    75% {
+        transform: translate(50px, -50px);
+    }
+}
+
+.animate-move1 {
+    animation: move1 10s ease-in-out infinite;
+}
+
+.animate-move2 {
+    animation: move2 12s ease-in-out infinite;
+}
+
+.animate-move3 {
+    animation: move3 8s ease-in-out infinite;
+}
+
+.change-enter {
+    opacity: 0;
+}
+
+.change-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.change-exit {
+    opacity: 1;
+}
+
+.change-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}
