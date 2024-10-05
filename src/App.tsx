@@ -4,16 +4,21 @@ import { RankedRecord as RecordSchema } from "./models";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./App.css";
 
-type PageType = "Typing" | "Shooting";
+type PageType = "typing" | "shooting";
 function App() {
+  const currentPath = window.location.pathname;
   const [records, setRecords] = useState<RecordSchema[]>([]);
   const [_, setWs] = useState<WebSocket | undefined>(undefined);
 
-  const [currentPage, setCurrentPage] = useState<PageType>("Typing");
+  const [currentPage, setCurrentPage] = useState<PageType>(
+    currentPath === "/" ? "typing" : (currentPath.replace("/", "") as PageType)
+  );
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentPage((prev) => (prev === "Typing" ? "Shooting" : "Typing"));
-    }, 20000);
+      if (currentPath === "/") {
+        setCurrentPage((prev) => (prev === "typing" ? "shooting" : "typing"));
+      }
+    }, 10000);
 
     return () => {
       clearInterval(interval);
@@ -52,12 +57,12 @@ function App() {
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={currentPage}
-        timeout={500}
+        timeout={300}
         classNames="fade"
         unmountOnExit
         mountOnEnter
       >
-        {currentPage === "Typing" ? (
+        {currentPage === "typing" ? (
           <Page
             title="タイピングゲーム ランキング"
             records={records
