@@ -23,18 +23,18 @@ export default function Record(props: Props) {
   return (
     <div
       className={twMerge(
-        "rounded-xl text-left px-5 py-7 drop-shadow-xl bg-white bg-opacity-90",
+        "rounded-xl text-left px-5 py-9 drop-shadow-xl bg-white bg-opacity-90",
         getCssByRank(props.rank),
         props.className
       )}
     >
       <div className="flex flex-row space-x-5 flex-grow items-center">
-        <p className="flex-none text-xl font-bold text-gray-600 w-8">
-          <span className="text-xl font-medium">#</span>
-          <span className="text-3xl font-extrabold">{props.rank}</span>
+        <p className="flex-none text-xl font-bold text-gray-600 min-w-10">
+          <span className="text-2xl font-medium">#</span>
+          <span className="text-4xl font-extrabold">{props.rank}</span>
         </p>
         <div className="flex flex-grow flex-col">
-          <p className="text-3xl font-normal">{props.record.name}</p>
+          <p className="text-4xl font-normal">{props.record.name}</p>
           <p className="text-md">
             {new Date(props.record.timestamp * 1000).toLocaleString("ja-JP", {
               timeZone: "Asia/Tokyo",
@@ -43,7 +43,7 @@ export default function Record(props: Props) {
         </div>
 
         <div className="flex flex-col items-end">
-          <p className="flex-none text-4xl italic font-semibold text-gray-700">
+          <p className="flex-none text-[2.5rem] italic font-semibold text-gray-700">
             {props.record.score}
             <span className="not-italic ml-3 font-normal text-xl">pts</span>
           </p>
@@ -66,9 +66,9 @@ export default function Record(props: Props) {
                   %
                 </span>
               </p>
-              <p className="text-red-700">
-                <span>{(props.record as TypingRecord).metadata.misses}</span>{" "}
-                <span>misses</span>
+              <p className="text-red-700 space-x-1">
+                <span>{(props.record as TypingRecord).metadata.misses}</span>
+                <span>miss</span>
               </p>
             </div>
           ) : (

@@ -11,11 +11,13 @@ interface Props {
 export default function Page(props: Props) {
   return (
     <div>
-      <h1 className="text-3xl mt-3">{props.title}</h1>
+      <h1 className="text-3xl mt-5 font-bold text-blue-900 mb-12">
+        {props.title}
+      </h1>
       <div className="flex flex-row h-full space-x-64 mx-52">
         <div className="w-[50vw]">
           <h1 className="text-3xl font-bold">上位のスコア</h1>
-          <TransitionGroup className={"flex flex-col space-y-6 p-3"}>
+          <TransitionGroup className={"flex flex-col space-y-12 p-3"}>
             {[...props.records]
               .sort((a, b) => b.record.score - a.record.score)
               .slice(0, 5)
@@ -32,7 +34,7 @@ export default function Page(props: Props) {
         </div>
         <div className="w-[50vw]">
           <h1 className="text-3xl font-bold">最近のスコア</h1>
-          <TransitionGroup className={"flex flex-col space-y-6 p-3"}>
+          <TransitionGroup className={"flex flex-col space-y-12 p-3"}>
             {[...props.records]
               .sort((a, b) => b.record.timestamp - a.record.timestamp)
               .slice(0, 5)
